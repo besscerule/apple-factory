@@ -1,0 +1,10 @@
+<p>APPLE DISPLAY
+<p>
+    <hr />
+<div *ngFor="let apple of apples">
+    <p>ID: {{apple.id}}</p>
+    <p>COLOR: {{apple.color}}</p>
+    <p>SIZE (CM): {{apple.sizeCm}}</p>
+    <p *ngIf="apple.isBad">IT IS BAD!!!</p>
+    <hr />
+</div>
