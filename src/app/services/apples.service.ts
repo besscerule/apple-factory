@@ -22,4 +22,8 @@ export class ApplesService {
                 shareReplay()
             )
     }
+    saveApple(appleId: number, changes: Partial<Apple>): Observable<any> {
+        return this.http.put(`/api/apples/${appleId}`, changes)
+            .pipe(shareReplay())
+    }
 }
