@@ -12,12 +12,14 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { AppleDialogComponent } from './apple-dialog/apple-dialog.component';
+import { AppleListComponent } from './apple-list/apple-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppleDisplayComponent,
-    AppleDialogComponent
+    AppleDialogComponent,
+    AppleListComponent
   ],
   imports: [
     BrowserAnimationsModule,
