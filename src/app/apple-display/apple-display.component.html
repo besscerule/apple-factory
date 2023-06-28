@@ -5,7 +5,7 @@
         <p>
     <hr />
 
-<div *ngFor="let apple of goodApples">
+<div *ngFor="let apple of goodApples$ | async">
     <p>ID: {{apple.id}}</p>
     <p>COLOR: {{apple.color}}</p>
     <p>SIZE (CM): {{apple.sizeCm}}</p>
@@ -17,7 +17,7 @@
     <p>
     <hr />
 
-<div *ngFor="let apple of badApples">
+<div *ngFor="let apple of badApples$ | async">
 <p>ID: {{apple.id}}</p>
 <p>COLOR: {{apple.color}}</p>
 <p>SIZE (CM): {{apple.sizeCm}}</p>

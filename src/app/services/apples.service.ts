@@ -8,6 +8,7 @@ import { Apple } from "../interfaces/apple.interface";
     providedIn: 'root'
 })
 
+
 export class ApplesService {
     constructor(private http: HttpClient) { }
 

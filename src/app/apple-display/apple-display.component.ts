@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Apple } from '../interfaces/apple.interface';
 import { HttpClient } from '@angular/common/http';
 import { LOCALHOST } from '../constants';
+import { Observable, map } from 'rxjs';
+import { ApplesService } from '../services/apples.service';
 
 @Component({
   selector: 'app-apple-display',
@@ -10,19 +12,18 @@ import { LOCALHOST } from '../constants';
 })
 export class AppleDisplayComponent implements OnInit {
 
-  badApples: Apple[] = [];
-  goodApples: Apple[] = [];
+  badApples$: Observable<Apple[]> | undefined
+  goodApples$: Observable<Apple[]> | undefined
 
-  constructor(private http: HttpClient) {}
+  constructor(private applesService: ApplesService) {}
 
   ngOnInit() {
-    this.http.get('/api/apples')
-      .subscribe(
-        res => {
-          const response: any = res
-          const apples: Apple[] = response.payload
-          this.badApples = apples.filter(apple => apple.isBad);
-          this.goodApples = apples.filter(apple => !apple.isBad);
-        });
+    const apples$ = this.applesService.loadAllApples()
+  this.badApples$ = apples$.pipe(
+    map(apples => apples.filter(apple => apple.isBad))
+  )
+  this.goodApples$ = apples$.pipe(
+    map(apples => apples.filter(apple => !apple.isBad))
+  )
   }
 }
