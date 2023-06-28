@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>APPLE {{apple.id}}</h2>
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput formControlName="sizeCm">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="color">
+      <mat-option *ngFor="let color of colors" [value]="color">
+        {{ color }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-raised-button color="accent" (click)="close()">
+    Close
+  </button>
+  <button mat-raised-button color="primary" #saveButton (click)="save()">
+    Save
+  </button>
+</mat-dialog-actions>

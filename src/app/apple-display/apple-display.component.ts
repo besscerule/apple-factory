@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Apple } from '../interfaces/apple.interface';
-import { HttpClient } from '@angular/common/http';
-import { LOCALHOST } from '../constants';
 import { Observable, map } from 'rxjs';
 import { ApplesService } from '../services/apples.service';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AppleDialogComponent} from '../apple-dialog/apple-dialog.component';
 
 @Component({
   selector: 'app-apple-display',
@@ -15,7 +15,7 @@ export class AppleDisplayComponent implements OnInit {
   badApples$: Observable<Apple[]> | undefined
   goodApples$: Observable<Apple[]> | undefined
 
-  constructor(private applesService: ApplesService) {}
+  constructor(private applesService: ApplesService, private dialog: MatDialog) {}
 
   ngOnInit() {
     const apples$ = this.applesService.loadAllApples()
@@ -25,5 +25,14 @@ export class AppleDisplayComponent implements OnInit {
   this.goodApples$ = apples$.pipe(
     map(apples => apples.filter(apple => !apple.isBad))
   )
+  }
+
+  editApple(apple: Apple) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "400px";
+    dialogConfig.data = apple;
+    const dialogRef = this.dialog.open(AppleDialogComponent, dialogConfig);
   }
 }
