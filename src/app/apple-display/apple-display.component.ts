@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { APPLE_COLORS } from '../constants';
-import { Apple } from '../apples/apple.interface';
+import { Apple } from '../interfaces/apple.interface';
+import { HttpClient } from '@angular/common/http';
+import { LOCALHOST } from '../constants';
 
 @Component({
   selector: 'app-apple-display',
@@ -9,9 +10,19 @@ import { Apple } from '../apples/apple.interface';
 })
 export class AppleDisplayComponent implements OnInit {
 
-  constructor() { }
-  apples: Apple[] = [{ id: 0, color: APPLE_COLORS[0], isBad: true, sizeCm: 4}]
-  ngOnInit(): void {
-  }
+  badApples: Apple[] = [];
+  goodApples: Apple[] = [];
 
+  constructor(private http: HttpClient) {}
+
+  ngOnInit() {
+    this.http.get('/api/apples')
+      .subscribe(
+        res => {
+          const response: any = res
+          const apples: Apple[] = response.payload
+          this.badApples = apples.filter(apple => apple.isBad);
+          this.goodApples = apples.filter(apple => !apple.isBad);
+        });
+  }
 }

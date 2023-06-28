@@ -1,10 +1,26 @@
 <p>APPLE DISPLAY
 <p>
     <hr />
-<div *ngFor="let apple of apples">
+    <p>GOOD APPLES
+        <p>
+    <hr />
+
+<div *ngFor="let apple of goodApples">
     <p>ID: {{apple.id}}</p>
     <p>COLOR: {{apple.color}}</p>
     <p>SIZE (CM): {{apple.sizeCm}}</p>
     <p *ngIf="apple.isBad">IT IS BAD!!!</p>
     <hr />
+</div>
+<hr />
+<p>BAD APPLES
+    <p>
+    <hr />
+
+<div *ngFor="let apple of badApples">
+<p>ID: {{apple.id}}</p>
+<p>COLOR: {{apple.color}}</p>
+<p>SIZE (CM): {{apple.sizeCm}}</p>
+<p *ngIf="apple.isBad">IT IS BAD!!!</p>
+<hr />
 </div>

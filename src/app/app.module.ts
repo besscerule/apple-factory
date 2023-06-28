@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppleDisplayComponent } from './apple-display/apple-display.component';
-import { ApplesService } from './apples/apples.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -11,9 +11,9 @@ import { ApplesService } from './apples/apples.service';
     AppleDisplayComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [ApplesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
