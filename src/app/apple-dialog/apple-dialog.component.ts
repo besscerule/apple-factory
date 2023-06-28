@@ -1,17 +1,18 @@
-import {AfterViewInit, Component, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import {Apple} from "../interfaces/apple.interface";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import { APPLE_COLORS } from '../constants';
 
 @Component({
     selector: 'apple-dialog',
     templateUrl: './apple-dialog.component.html',
     styleUrls: ['./apple-dialog.component.css']
 })
-export class AppleDialogComponent implements AfterViewInit {
+export class AppleDialogComponent {
 
     form: FormGroup;
-
+    colors = APPLE_COLORS
     apple:Apple;
 
     constructor(
@@ -21,26 +22,19 @@ export class AppleDialogComponent implements AfterViewInit {
 
         this.apple = apple;
 
-        this.form = fb.group({
+        this.form = this.fb.group({
             color: [apple.color, Validators.required],
-            sizeCm: [apple.sizeCm, Validators.required],
-            isBad: [apple.isBad,Validators.required]
+            sizeCm: [apple.sizeCm, Validators.required]
         });
 
     }
 
-    ngAfterViewInit() {
-
-    }
-
     save() {
-
       const changes = this.form.value;
-
+      console.log(changes)
     }
 
     close() {
         this.dialogRef.close();
     }
-
 }

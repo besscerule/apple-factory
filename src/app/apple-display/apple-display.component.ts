@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Apple } from '../interfaces/apple.interface';
 import { HttpClient } from '@angular/common/http';
-import { LOCALHOST } from '../constants';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {AppleDialogComponent} from '../apple-dialog/apple-dialog.component';
 
 @Component({
   selector: 'app-apple-display',
@@ -13,7 +14,7 @@ export class AppleDisplayComponent implements OnInit {
   badApples: Apple[] = [];
   goodApples: Apple[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.http.get('/api/apples')
@@ -24,5 +25,14 @@ export class AppleDisplayComponent implements OnInit {
           this.badApples = apples.filter(apple => apple.isBad);
           this.goodApples = apples.filter(apple => !apple.isBad);
         });
+  }
+
+  editApple(apple: Apple) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "400px";
+    dialogConfig.data = apple;
+    const dialogRef = this.dialog.open(AppleDialogComponent, dialogConfig);
   }
 }

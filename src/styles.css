@@ -1,18 +1,1 @@
-mat-card {
-    border-style: solid
-}
 
-mat-card-title {
-    font-size: large;
-}
-
-mat-card-subtitle {
-    font-size: medium;
-}
-
-body {
-    font-family: 'Roboto';
-    font-size: 'small';
-}
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
