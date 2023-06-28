@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+mat-card {
+    border-style: solid
+}
+
+mat-card-title {
+    font-size: large;
+}
+
+mat-card-subtitle {
+    font-size: medium;
+}
+
+body {
+    font-family: 'Roboto';
+    font-size: 'small';
+}

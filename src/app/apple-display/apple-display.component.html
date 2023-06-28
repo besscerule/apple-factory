@@ -1,26 +1,21 @@
-<p>APPLE DISPLAY
-<p>
-    <hr />
-    <p>GOOD APPLES
-        <p>
-    <hr />
-
-<div *ngFor="let apple of goodApples">
-    <p>ID: {{apple.id}}</p>
-    <p>COLOR: {{apple.color}}</p>
-    <p>SIZE (CM): {{apple.sizeCm}}</p>
-    <p *ngIf="apple.isBad">IT IS BAD!!!</p>
-    <hr />
-</div>
-<hr />
-<p>BAD APPLES
-    <p>
-    <hr />
-
-<div *ngFor="let apple of badApples">
-<p>ID: {{apple.id}}</p>
-<p>COLOR: {{apple.color}}</p>
-<p>SIZE (CM): {{apple.sizeCm}}</p>
-<p *ngIf="apple.isBad">IT IS BAD!!!</p>
-<hr />
-</div>
+<mat-card>
+    <mat-card-title>APPLE DISPLAY</mat-card-title>
+    <mat-card-subtitle>GOOD APPLES</mat-card-subtitle>
+<mat-card-content *ngFor="let apple of goodApples">
+    <mat-card>
+        <mat-card-content>ID: {{apple.id}}</mat-card-content>
+        <mat-card-content>COLOR: {{apple.color}}</mat-card-content>
+        <mat-card-content>SIZE (CM): {{apple.sizeCm}}</mat-card-content>
+        <mat-card-content *ngIf="apple.isBad">IT IS BAD!!!</mat-card-content>
+    </mat-card>
+</mat-card-content>
+<mat-card-subtitle>BAD APPLES</mat-card-subtitle>
+<mat-card-content *ngFor="let apple of badApples">
+    <mat-card>
+        <mat-card-content>ID: {{apple.id}}</mat-card-content>
+        <mat-card-content>COLOR: {{apple.color}}</mat-card-content>
+        <mat-card-content>SIZE (CM): {{apple.sizeCm}}</mat-card-content>
+        <mat-card-content *ngIf="apple.isBad">IT IS BAD!!!</mat-card-content>
+    </mat-card>
+</mat-card-content>
+</mat-card>
