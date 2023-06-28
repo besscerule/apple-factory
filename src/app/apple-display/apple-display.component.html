@@ -2,8 +2,8 @@
     <mat-card-content>
         <mat-card-title>APPLE DISPLAY</mat-card-title>
         <mat-card-subtitle>GOOD APPLES</mat-card-subtitle>
-        <app-apple-list [apples]="goodApples$ | async"></app-apple-list>
+        <app-apple-list [apples]="goodApples$ | async" (applesChanged)="reloadApples()"></app-apple-list>
         <mat-card-subtitle>BAD APPLES</mat-card-subtitle>
-        <app-apple-list [apples]="badApples$ | async"></app-apple-list>
+        <app-apple-list [apples]="badApples$ | async" (applesChanged)="reloadApples()"></app-apple-list>
     </mat-card-content>
 </mat-card>

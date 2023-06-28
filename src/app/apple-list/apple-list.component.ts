@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Apple } from '../interfaces/apple.interface';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {AppleDialogComponent} from '../apple-dialog/apple-dialog.component';
@@ -13,8 +13,9 @@ export class AppleListComponent {
   constructor(private dialog: MatDialog) { }
   @Input()
   apples: Apple[] | null = []
-  private applesChanged = new EventEmitter()
 
+  @Output()
+  private applesChanged = new EventEmitter()
   editApple(apple: Apple) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;

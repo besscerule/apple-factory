@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Apple } from '../interfaces/apple.interface';
-import { Observable, filter, map, tap } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { ApplesService } from '../services/apples.service';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AppleDialogComponent } from '../apple-dialog/apple-dialog.component';
 
 @Component({
   selector: 'app-apple-display',
@@ -19,6 +17,10 @@ export class AppleDisplayComponent implements OnInit {
   constructor(private applesService: ApplesService) { }
 
   ngOnInit() {
+    this.reloadApples()
+   }
+ 
+   reloadApples() {
     const apples$ = this.applesService.loadAllApples()
     this.badApples$ = apples$.pipe(
       map(apples => apples.filter(apple => apple.isBad))
