@@ -2,28 +2,8 @@
     <mat-card-content>
         <mat-card-title>APPLE DISPLAY</mat-card-title>
         <mat-card-subtitle>GOOD APPLES</mat-card-subtitle>
-        <mat-card *ngFor="let apple of goodApples">
-            <mat-card-content>ID: {{apple.id}}</mat-card-content>
-            <mat-card-content>COLOR: {{apple.color}}</mat-card-content>
-            <mat-card-content>SIZE (CM): {{apple.sizeCm}}</mat-card-content>
-            <mat-card-content *ngIf="apple.isBad">IT IS BAD!!!</mat-card-content>
-            <mat-card-actions>
-                <button mat-button mat-raised-button color="accent" (click)="editApple(apple)">
-                    EDIT APPLE
-                </button>
-            </mat-card-actions>
-        </mat-card>
+        <app-apple-list [apples]="goodApples$ | async"></app-apple-list>
         <mat-card-subtitle>BAD APPLES</mat-card-subtitle>
-        <mat-card *ngFor="let apple of badApples">
-            <mat-card-content>ID: {{apple.id}}</mat-card-content>
-            <mat-card-content>COLOR: {{apple.color}}</mat-card-content>
-            <mat-card-content>SIZE (CM): {{apple.sizeCm}}</mat-card-content>
-            <mat-card-content *ngIf="apple.isBad">IT IS BAD!!!</mat-card-content>
-            <mat-card-actions>
-                <button mat-button mat-raised-button color="accent" (click)="editApple(apple)">
-                    EDIT APPLE
-                </button>
-            </mat-card-actions>
-        </mat-card>
+        <app-apple-list [apples]="badApples$ | async"></app-apple-list>
     </mat-card-content>
 </mat-card>

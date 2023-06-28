@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Apple } from '../interfaces/apple.interface';
-import { HttpClient } from '@angular/common/http';
-import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {AppleDialogComponent} from '../apple-dialog/apple-dialog.component';
+import { Observable, map } from 'rxjs';
+import { ApplesService } from '../services/apples.service';
 
 @Component({
   selector: 'app-apple-display',
@@ -11,28 +10,18 @@ import {AppleDialogComponent} from '../apple-dialog/apple-dialog.component';
 })
 export class AppleDisplayComponent implements OnInit {
 
-  badApples: Apple[] = [];
-  goodApples: Apple[] = [];
+  badApples$: Observable<Apple[]> | undefined
+  goodApples$: Observable<Apple[]> | undefined
 
-  constructor(private http: HttpClient, private dialog: MatDialog) {}
+  constructor(private applesService: ApplesService) {}
 
   ngOnInit() {
-    this.http.get('/api/apples')
-      .subscribe(
-        res => {
-          const response: any = res
-          const apples: Apple[] = response.payload
-          this.badApples = apples.filter(apple => apple.isBad);
-          this.goodApples = apples.filter(apple => !apple.isBad);
-        });
-  }
-
-  editApple(apple: Apple) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "400px";
-    dialogConfig.data = apple;
-    const dialogRef = this.dialog.open(AppleDialogComponent, dialogConfig);
+    const apples$ = this.applesService.loadAllApples()
+  this.badApples$ = apples$.pipe(
+    map(apples => apples.filter(apple => apple.isBad))
+  )
+  this.goodApples$ = apples$.pipe(
+    map(apples => apples.filter(apple => !apple.isBad))
+  )
   }
 }
