@@ -17,7 +17,7 @@ export function getAllApples(req: Request, res: Response) {
 
              res.status(200).json({payload:Object.values(APPLES)});
 
-        }, 200);
+        }, 1000);
 }
 
 

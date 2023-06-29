@@ -8,18 +8,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AppleDialogComponent } from './apple-dialog/apple-dialog.component';
 import { AppleListComponent } from './apple-list/apple-list.component';
+import { LoadingComponent } from './loading/loading.component';
+import { LoadingService } from './loading/loading.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppleDisplayComponent,
     AppleDialogComponent,
-    AppleListComponent
+    AppleListComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -31,9 +35,10 @@ import { AppleListComponent } from './apple-list/apple-list.component';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
-  providers: [ApplesService],
+  providers: [ApplesService, LoadingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

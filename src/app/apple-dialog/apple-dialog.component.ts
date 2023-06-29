@@ -4,11 +4,15 @@ import {Apple} from "../interfaces/apple.interface";
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
 import { APPLE_COLORS } from '../constants';
 import { ApplesService } from '../services/apples.service';
+import { LoadingService } from '../loading/loading.service';
 
 @Component({
     selector: 'apple-dialog',
     templateUrl: './apple-dialog.component.html',
-    styleUrls: ['./apple-dialog.component.css']
+    styleUrls: ['./apple-dialog.component.css'],
+    providers: [
+        LoadingService
+    ]
 })
 export class AppleDialogComponent {
 
