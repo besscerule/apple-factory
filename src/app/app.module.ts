@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { AppleDialogComponent } from './apple-dialog/apple-dialog.component';
 import { AppleListComponent } from './apple-list/apple-list.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { AppleListComponent } from './apple-list/apple-list.component';
     MatDialogModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [ApplesService],
   bootstrap: [AppComponent]
