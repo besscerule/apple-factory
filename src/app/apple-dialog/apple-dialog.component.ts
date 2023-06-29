@@ -9,10 +9,7 @@ import { LoadingService } from '../loading/loading.service';
 @Component({
     selector: 'apple-dialog',
     templateUrl: './apple-dialog.component.html',
-    styleUrls: ['./apple-dialog.component.css'],
-    providers: [
-        LoadingService
-    ]
+    styleUrls: ['./apple-dialog.component.css']
 })
 export class AppleDialogComponent {
 
